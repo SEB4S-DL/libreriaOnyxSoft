@@ -1,3 +1,0 @@
-azul = #00A3E8
-blanco = #ffffff
-negro = #000000git 
