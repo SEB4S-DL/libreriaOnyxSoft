@@ -1,0 +1,84 @@
+/* Contenedor principal */
+.container {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 95%;
+    max-width: 600px;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Título */
+.container h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #00a3e8;
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Formulario */
+form#crearGenero {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 40%;
+}
+
+/* Input de texto */
+form#crearGenero input[type="text"] {
+    padding: 0.75rem 1rem;
+    border: 2px solid #00a3e8;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form#crearGenero input[type="text"]:focus {
+    outline: none;
+    border-color: #0077b6;
+    box-shadow: 0 0 0 3px rgba(0, 163, 232, 0.2);
+}
+
+/* Botones */
+form#crearGenero button {
+    background-color: #00a3e8;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+    width: fit-content;
+}
+
+form#crearGenero button[type="button"] {
+    background-color: #999;
+}
+
+form#crearGenero button:hover {
+    background-color: #0077b6;
+}
+
+form#crearGenero button[type="button"]:hover {
+    background-color: #777;
+}
+
+/* Mensaje de respuesta */
+#respuesta4 {
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+}

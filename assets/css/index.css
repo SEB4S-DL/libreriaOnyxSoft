@@ -1,7 +1,7 @@
 .container {
     background-color: #f8f9fa; /* gris clarito pro */
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.467);
     padding: 2rem;
     margin: 2rem auto;
     width: 95%;
@@ -79,3 +79,25 @@
     font-size: 0.95rem;
     line-height: 1.4;
 }
+
+.btn {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    width:100%;
+    background-color: #00a3e8;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0077b6;
+}
+
+.btn-danger {
+    width: 100%;
+}
+

@@ -1,8 +1,4 @@
-<?php include_once __DIR__ . '/../config.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
+<?php include_once __DIR__ . '/../config.php';?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -25,8 +21,8 @@ error_reporting(E_ALL);
     <div class="container">
         <h1>Crear libro</h1>
         <form id="crearLibro">
-            <input type="text" name="titulo" placeholder="Ingrese el nombre del libro">
-            <input type="text" name="autor" placeholder="Ingrese el nombre del autor">
+            <input type="text" name="titulo" placeholder="Ingrese el nombre del libro" required>
+            <input type="text" name="autor" placeholder="Ingrese el nombre del autor" required>
            <select name="genero" required>
                 <option selected disabled>Seleccione el género</option>
                 <?php while ($genero = $result->fetch_assoc()): ?>
@@ -35,7 +31,7 @@ error_reporting(E_ALL);
                     </option>
                 <?php endwhile; ?>
             </select>
-            <input type="text" name="anio" placeholder="Ingrese el año del libro">
+            <input type="text" name="anio" placeholder="Ingrese el año del libro" required>
 
             <button type="submit">Crear libro</button>
             <button type="button" onclick="window.location.href='<?= BASE_URL ?>index.php'">Cancelar</button>
@@ -47,5 +43,6 @@ error_reporting(E_ALL);
 
     <?php include ROOT_PATH . '/includes/footer.php'; ?>
 </body>
-<script src="../js/crearLibroFetch.js"></script>
+<script src="<?php echo BASE_URL; ?>js/crearLibroFetch.js"></script>
+
 </html>

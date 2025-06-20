@@ -25,6 +25,5 @@ $stmtAutor->close();
 $stmtLibro->close();
 $conn->close();
 
-header("Location: index.php");
 exit;
 ?>
