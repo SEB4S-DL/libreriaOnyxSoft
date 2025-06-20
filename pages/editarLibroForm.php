@@ -60,7 +60,7 @@
         </select>
 
         <button type="submit">Editar</button>
-        <button type="button" onclick="window.location.href='<?php echo BASE_URL ?>index.php'">Cancelar</button>
+        <button type="button" onclick="window.location.href='<?php echo BASE_URL ?>index.php'" style="background-color: gray;">Cancelar</button>
     </form>
         <div id="respuesta2"></div>
     </div>
