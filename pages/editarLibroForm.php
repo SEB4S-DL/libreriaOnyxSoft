@@ -45,7 +45,7 @@
         <form id="editarLibro">
         <input type="hidden" name="id_libro" value="<?= $libro['id'] ?>" required>
             <label for="">Titulo</label>
-        <input type="text" name="titulo" value="<?= htmlspecialchars($libro['titulo']) ?>" required>
+        <input type="text" name="titulo" value="<?= htmlspecialchars($libro['titulo']) ?>" required pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios">
             <label for="">Año</label>
         <input type="number" name="anio" value="<?= $libro['anio_publicacion'] ?>" required>
 
@@ -59,7 +59,7 @@
             <?php endwhile; ?>
         </select>
 
-        <button type="submit">Actualizar</button>
+        <button type="submit">Editar</button>
         <button type="button" onclick="window.location.href='<?php echo BASE_URL ?>index.php'">Cancelar</button>
     </form>
         <div id="respuesta2"></div>

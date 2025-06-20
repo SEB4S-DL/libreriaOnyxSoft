@@ -11,16 +11,23 @@ document.getElementById("crearLibro").addEventListener("submit", function(e) {
         method: "POST",
         body: formData
     })
-    .then(response => response.text()) // o .json() si devuelves JSON
+    .then(response => response.json()) // <-- ahora esperamos JSON
     .then(data => {
-        console.log("Respuesta del servidor:", data);
-        responseDiv.textContent = "✅ Libro creado exitosamente";
-         setTimeout(() => {
-             window.location.href = BASE_URL + "index.php";
-         }, 2000);
+        if (data.status === "success") {
+            responseDiv.textContent = "✅ " + data.message;
+            responseDiv.style.color = "green";
+
+            setTimeout(() => {
+                window.location.href = BASE_URL + "index.php";
+            }, 2000);
+        } else {
+            responseDiv.textContent = "❌ " + data.message;
+            responseDiv.style.color = "red";
+        }
     })
     .catch(error => {
         console.error("Error en el envío:", error);
-        responseDiv.textContent = "❌ Error al enviar el formulario";
+        responseDiv.textContent = "❌ Error al enviar el formulario.";
+        responseDiv.style.color = "red";
     });
 });

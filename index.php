@@ -47,7 +47,7 @@
 
                 <form id="eliminarLibro">
                     <input type="hidden" name="id_libro" value="<?= $libro['id'] ?>">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <button type="submit" class="btn btn-danger" style="background-color: gray;">Eliminar</button>
                 </form>
                 </div>
             <?php endwhile; ?>

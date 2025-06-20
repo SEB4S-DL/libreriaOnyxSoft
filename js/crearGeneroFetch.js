@@ -1,6 +1,6 @@
 const responseDiv = document.getElementById("respuesta4");
 
-document.getElementById("").addEventListener("submit", function(e) {
+document.getElementById("crearGenero").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const BASE_URL = '/libreriaOnyxSoft/';
@@ -11,13 +11,18 @@ document.getElementById("").addEventListener("submit", function(e) {
         method: "POST",
         body: formData
     })
-    .then(response => response.text()) // o .json() si devuelves JSON
+    .then(response => response.json())
     .then(data => {
         console.log("Respuesta del servidor:", data);
-        responseDiv.textContent = "✅ Género creado exitosamente";
-         setTimeout(() => {
-             window.location.href = BASE_URL + "index.php";
-         }, 2000);
+
+        if (data.status === "success") {
+            responseDiv.textContent = "✅ " + data.message;
+            setTimeout(() => {
+                window.location.href = BASE_URL + "index.php";
+            }, 2000);
+        } else {
+            responseDiv.textContent = "❌ " + data.message;
+        }
     })
     .catch(error => {
         console.error("Error en el envío:", error);

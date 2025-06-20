@@ -1,29 +1,59 @@
 <?php
 require_once '../db/conection.php';
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
-$titulo = $_POST['titulo'];
-$nombreAutor = $_POST['autor'];
-$generoId = $_POST['genero'];
-$anio = (int)$_POST['anio'];
+// Función para validar texto sin números ni caracteres raros
+function soloLetras($texto) {
+    return preg_match('/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/u', $texto);
+}
 
-//Insertar autor y obtener su ID
+// Recoger datos
+$titulo = trim($_POST['titulo'] ?? '');
+$nombreAutor = trim($_POST['autor'] ?? '');
+$generoId = $_POST['genero'] ?? '';
+$anio = $_POST['anio'] ?? '';
+
+// Validaciones básicas
+if (!$titulo || !$nombreAutor || !$generoId || !$anio) {
+    echo json_encode(["status" => "error", "message" => "Todos los campos son obligatorios."]);
+    exit;
+}
+
+// Validar que título y autor solo tengan letras y espacios
+if (!soloLetras($titulo)) {
+    echo json_encode(["status" => "error", "message" => "El título solo puede contener letras y espacios."]);
+    exit;
+}
+
+if (!soloLetras($nombreAutor)) {
+    echo json_encode(["status" => "error", "message" => "El nombre del autor solo puede contener letras y espacios."]);
+    exit;
+}
+
+
+
+$anio = (int)$anio;
+
+// Insertar autor y obtener ID
 $stmtAutor = $conn->prepare("INSERT INTO autores (nombre) VALUES (?)");
 $stmtAutor->bind_param("s", $nombreAutor);
-$stmtAutor->execute();
+if (!$stmtAutor->execute()) {
+    echo json_encode(["status" => "error", "message" => "Error al insertar el autor."]);
+    exit;
+}
+$autorId = $stmtAutor->insert_id;
+$stmtAutor->close();
 
-$autorId = $stmtAutor->insert_id; 
-
-// Insertar libro con el autor_id 
+// Insertar libro
 $stmtLibro = $conn->prepare("INSERT INTO libros (titulo, autor_id, genero_id, anio_publicacion) VALUES (?, ?, ?, ?)");
 $stmtLibro->bind_param("siii", $titulo, $autorId, $generoId, $anio);
-$stmtLibro->execute();
-
-$stmtAutor->close();
+if (!$stmtLibro->execute()) {
+    echo json_encode(["status" => "error", "message" => "Error al insertar el libro."]);
+    exit;
+}
 $stmtLibro->close();
 $conn->close();
 
+// Todo ok
+echo json_encode(["status" => "success", "message" => "Libro creado exitosamente."]);
 exit;
-?>

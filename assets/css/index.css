@@ -1,35 +1,39 @@
+/* Contenedor general */
 .container {
-    background-color: #f8f9fa; /* gris clarito pro */
+    background-color: #f8f9fa;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.467);
-    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 3rem 2rem;
     margin: 2rem auto;
     width: 95%;
+    max-width: 1300px;
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
+/* Título */
 .container h1 {
     color: #333;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
     text-align: center;
     border-bottom: 2px solid #00a3e8;
     padding-bottom: 0.5rem;
+    word-wrap: break-word;
 }
 
-/* Rejilla de libros */
+/* Lista de libros como rejilla */
 .book-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -38,35 +42,22 @@
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 12px;
-    padding: 1.25rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
-.book button{
-    background-color: #00a3e8;
-    border-radius: 10px;
-    color: #ffffff;
-    border: none;
-    padding: 5px;
-}
-.book button:hover{
-    background-color: #0077b6;
-    cursor: pointer;
+    gap: 0.75rem;
+    min-height: 240px;
 }
 
-.book button:active{
-    background-color: #00a3e8;
-}
 .book:hover {
     transform: translateY(-6px);
     box-shadow: 0 6px 20px rgba(0, 163, 232, 0.2);
 }
 
 .book h2 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: #0077b6;
     margin: 0;
     border-bottom: 1px solid #eee;
@@ -76,28 +67,105 @@
 .book p {
     margin: 0;
     color: #555;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    font-size: 1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
 }
 
-.btn {
-    display: inline-block;
-    padding: 0.45rem 1rem;
-    width:100%;
+/* Botones */
+.btn,
+.book button {
+    display: block;
+    padding: 0.75rem 1rem;
     background-color: #00a3e8;
-    color: #fff;
+    color: #ffffff;
+    border: none;
     border-radius: 8px;
-    text-decoration: none;
     font-weight: bold;
     text-align: center;
+    cursor: pointer;
     transition: background-color 0.3s;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
 }
 
-.btn:hover {
+.btn:hover,
+.book button:hover {
     background-color: #0077b6;
 }
 
-.btn-danger {
-    width: 100%;
+.btn:active,
+.book button:active {
+    background-color: #00a3e8;
 }
 
+.btn-danger {
+    background-color: #e63946;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Responsive tipográfico y layout */
+@media (max-width: 1024px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .container h1 {
+        font-size: 2rem;
+    }
+
+    .book h2 {
+        font-size: 1.25rem;
+    }
+
+    .book p,
+    .btn {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .container h1 {
+        font-size: 1.75rem;
+    }
+
+    .book-list {
+        grid-template-columns: 1fr;
+    }
+
+    .book h2 {
+        font-size: 1.15rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container h1 {
+        font-size: 1.5rem;
+    }
+
+    .book h2 {
+        font-size: 1rem;
+    }
+
+    .book p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+    }
+}

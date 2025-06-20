@@ -17,7 +17,7 @@
         <h1>Crear Género</h1>
 
         <form id="crearGenero">
-            <input type="text" name="nombre" placeholder="Ingrese el nombre del género" required>
+            <input type="text" name="nombre" placeholder="Ingrese el nombre del género" required pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios">
 
             <button type="submit">Crear género</button>
             <button type="button" onclick="window.location.href='<?= BASE_URL ?>index.php'">Cancelar</button>

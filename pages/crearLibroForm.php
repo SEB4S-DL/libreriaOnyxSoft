@@ -21,8 +21,8 @@
     <div class="container">
         <h1>Crear libro</h1>
         <form id="crearLibro">
-            <input type="text" name="titulo" placeholder="Ingrese el nombre del libro" required>
-            <input type="text" name="autor" placeholder="Ingrese el nombre del autor" required>
+            <input type="text" name="titulo" placeholder="Ingrese el nombre del libro" required pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios">
+            <input type="text" name="autor" placeholder="Ingrese el nombre del autor" required pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios">
            <select name="genero" required>
                 <option selected disabled>Seleccione el género</option>
                 <?php while ($genero = $result->fetch_assoc()): ?>
@@ -34,7 +34,7 @@
             <input type="text" name="anio" placeholder="Ingrese el año del libro" required>
 
             <button type="submit">Crear libro</button>
-            <button type="button" onclick="window.location.href='<?= BASE_URL ?>index.php'">Cancelar</button>
+            <button type="button" onclick="window.location.href='<?= BASE_URL ?>index.php'" style="background-color: gray;">Cancelar</button>
             
             <div id="respuesta"></div>
 

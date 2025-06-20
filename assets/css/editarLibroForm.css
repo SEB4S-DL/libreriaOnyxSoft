@@ -2,18 +2,20 @@
     background-color: #f8f9fa;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    padding: 2.5rem;
+    padding: 2.5rem 2rem;
     margin: 3rem auto;
     max-width: 700px;
+    width: 95%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    box-sizing: border-box;
 }
 
 .container h1 {
     color: #333;
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-align: center;
     border-bottom: 2px solid #00a3e8;
     padding-bottom: 0.5rem;
@@ -21,17 +23,21 @@
     text-transform: uppercase;
 }
 
+/* Formulario */
 form {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    width: 100%;
 }
 
 form label {
     font-weight: bold;
     color: #333;
+    font-size: 1rem;
 }
 
+/* Inputs y selects */
 form input[type="text"],
 form input[type="number"],
 form select {
@@ -42,6 +48,8 @@ form select {
     background-color: #ffffff;
     color: #333;
     transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 form input:focus,
@@ -51,6 +59,7 @@ form select:focus {
     box-shadow: 0 0 0 3px rgba(0, 163, 232, 0.2);
 }
 
+/* Botones */
 form button {
     background-color: #00a3e8;
     color: #ffffff;
@@ -61,7 +70,8 @@ form button {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: fit-content;
+    width: 100%;
+    max-width: 250px;
     align-self: center;
 }
 
@@ -69,9 +79,50 @@ form button:hover {
     background-color: #0077b6;
 }
 
-#respuesta {
+/* Mensaje respuesta */
+#respuesta,
+#respuesta2 {
     text-align: center;
     font-weight: bold;
     color: green;
     margin-top: 1rem;
+    word-wrap: break-word;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .container h1 {
+        font-size: 1.5rem;
+    }
+
+    form label {
+        font-size: 0.95rem;
+    }
+
+    form input,
+    form select {
+        font-size: 0.95rem;
+    }
+
+    form button {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .container h1 {
+        font-size: 1.3rem;
+    }
+
+    form button {
+        max-width: 100%;
+    }
 }

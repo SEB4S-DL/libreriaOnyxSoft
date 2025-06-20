@@ -1,30 +1,43 @@
 <?php
 require_once '../db/conection.php';
 
-// Validar que llegan los datos
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Validar existencia de datos
 if (
-    !isset($_POST['id_libro']) ||
-    !isset($_POST['titulo']) ||
-    !isset($_POST['genero']) ||
-    !isset($_POST['anio'])
+    !isset($_POST['id_libro'], $_POST['titulo'], $_POST['genero'], $_POST['anio'])
 ) {
-    die("Faltan datos para actualizar el libro.");
+    http_response_code(400);
+    echo json_encode(['status' => 'error', 'message' => 'Faltan datos obligatorios.']);
+    exit;
 }
 
-$id = (int)$_POST['id_libro'];
-$titulo = $_POST['titulo'];
-$generoId = (int)$_POST['genero'];
-$anio = (int)$_POST['anio'];
+// Limpiar y validar entrada
+$id = filter_var($_POST['id_libro'], FILTER_VALIDATE_INT);
+$titulo = trim($_POST['titulo']);
+$generoId = filter_var($_POST['genero'], FILTER_VALIDATE_INT);
+$anio = filter_var($_POST['anio'], FILTER_VALIDATE_INT);
 
-// Actualizar el libro 
+// Validar valores
+if (!$id || !$generoId || !$anio || empty($titulo) || preg_match('/\d/', $titulo)) {
+    http_response_code(400);
+    echo json_encode(['status' => 'error', 'message' => 'Datos inválidos. Asegúrese de no usar números en el título.']);
+    exit;
+}
+
+// Preparar y ejecutar actualización
 $stmt = $conn->prepare("UPDATE libros SET titulo = ?, genero_id = ?, anio_publicacion = ? WHERE id = ?");
 $stmt->bind_param("siii", $titulo, $generoId, $anio, $id);
 
 if ($stmt->execute()) {
+    echo json_encode(['status' => 'success', 'message' => 'Libro actualizado correctamente.']);
 } else {
+    http_response_code(500);
+    echo json_encode(['status' => 'error', 'message' => 'Error al actualizar el libro.']);
 }
 
 $stmt->close();
 $conn->close();
+exit;
 ?>
-
