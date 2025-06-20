@@ -1,0 +1,33 @@
+header {
+    background-color: #00a3e8;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+header li {
+    list-style: none;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

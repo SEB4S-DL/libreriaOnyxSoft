@@ -1,0 +1,81 @@
+.container {
+    background-color: #f8f9fa; /* gris clarito pro */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 95%;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.container h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #00a3e8;
+    padding-bottom: 0.5rem;
+}
+
+/* Rejilla de libros */
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta individual */
+.book {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.book button{
+    background-color: #00a3e8;
+    border-radius: 10px;
+    color: #ffffff;
+    border: none;
+    padding: 5px;
+}
+.book button:hover{
+    background-color: #0077b6;
+    cursor: pointer;
+}
+
+.book button:active{
+    background-color: #00a3e8;
+}
+.book:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0, 163, 232, 0.2);
+}
+
+.book h2 {
+    font-size: 1.25rem;
+    color: #0077b6;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.25rem;
+}
+
+.book p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
