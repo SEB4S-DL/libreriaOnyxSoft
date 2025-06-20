@@ -10,7 +10,7 @@ $nombreAutor = trim($_POST['autor'] ?? '');
 $generoId = $_POST['genero'] ?? '';
 $anio = $_POST['anio'] ?? '';
 
-// Validaciones básicas
+// Validaciones
 if (!$titulo || !$nombreAutor || !$generoId || !$anio) {
     echo json_encode(["status" => "error", "message" => "Todos los campos son obligatorios."]);
     exit;

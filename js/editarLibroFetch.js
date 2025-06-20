@@ -11,7 +11,7 @@ document.getElementById("editarLibro").addEventListener("submit", function(e) {
         method: "POST",
         body: formData
     })
-    .then(response => response.json()) // ahora sí, porque el back devuelve JSON
+    .then(response => response.json()) 
     .then(data => {
         console.log("Respuesta del servidor:", data);
 

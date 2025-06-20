@@ -11,7 +11,7 @@ document.getElementById("crearLibro").addEventListener("submit", function(e) {
         method: "POST",
         body: formData
     })
-    .then(response => response.json()) // <-- ahora esperamos JSON
+    .then(response => response.json()) 
     .then(data => {
         if (data.status === "success") {
             responseDiv.textContent = "✅ " + data.message;
